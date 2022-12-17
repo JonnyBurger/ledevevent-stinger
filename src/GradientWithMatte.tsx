@@ -1,9 +1,10 @@
 import React from 'react';
-import {AbsoluteFill, useVideoConfig} from 'remotion';
+import {AbsoluteFill, useCurrentFrame, useVideoConfig} from 'remotion';
 import {Gradient} from './Gradient';
 
 export const GradientWithMatte: React.FC = () => {
 	const {width} = useVideoConfig();
+	const frame = useCurrentFrame();
 	return (
 		<AbsoluteFill>
 			<AbsoluteFill style={{width: width / 2, overflow: 'hidden'}}>
@@ -12,7 +13,15 @@ export const GradientWithMatte: React.FC = () => {
 			<AbsoluteFill
 				style={{width: width / 2, left: width / 2, overflow: 'hidden'}}
 			>
+				<AbsoluteFill
+					style={{
+						background: 'black',
+					}}
+				/>
 				<Gradient matte overrideWidth={width / 2} />
+				{frame > 30 ? (
+					<AbsoluteFill style={{backgroundColor: 'white'}} />
+				) : null}
 			</AbsoluteFill>
 		</AbsoluteFill>
 	);
