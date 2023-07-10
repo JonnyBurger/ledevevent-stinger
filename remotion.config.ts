@@ -1,5 +1,5 @@
-import {Config} from 'remotion';
+import {Config} from '@remotion/cli/config';
 
-Config.Rendering.setImageFormat('png');
-Config.Output.setPixelFormat('yuva420p');
-Config.Output.setCodec('vp9');
+Config.setVideoImageFormat('png');
+Config.setPixelFormat('yuva420p');
+Config.setCodec('vp9');
